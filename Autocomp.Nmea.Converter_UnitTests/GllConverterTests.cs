@@ -31,6 +31,7 @@ namespace Autocomp.Nmea.Converter_UnitTests
             Assert.AreEqual(4916.45, result.Latitude);
             Assert.AreEqual(LatitudeDirection.N, result.LatitudeDirection);
             Assert.AreEqual(12311.12, result.Longitude);
+            Assert.AreEqual("10:54:44 PM", result.DateTime.ToLongTimeString());
             Assert.AreEqual(LongitudeDirection.W, result.LongitudeDirection);
             Assert.AreEqual(DataValid.Valid, result.Status);
             Assert.AreEqual(ModeIndicator.Autonomous, result.ModeIndicator);
@@ -46,6 +47,7 @@ namespace Autocomp.Nmea.Converter_UnitTests
             Assert.AreEqual(4916.45, result.Latitude);
             Assert.AreEqual(LatitudeDirection.N, result.LatitudeDirection);
             Assert.AreEqual(12311.12, result.Longitude);
+            Assert.AreEqual("10:54:44 PM", result.DateTime.ToLongTimeString());
             Assert.AreEqual(LongitudeDirection.W, result.LongitudeDirection);
             Assert.AreEqual(DataValid.Valid, result.Status);
             Assert.AreEqual(ModeIndicator.Autonomous, result.ModeIndicator);
@@ -93,6 +95,7 @@ namespace Autocomp.Nmea.Converter_UnitTests
             Assert.AreEqual(4916.45, result.Latitude);
             Assert.AreEqual(LatitudeDirection.S, result.LatitudeDirection);
             Assert.AreEqual(12311.12, result.Longitude);
+            Assert.AreEqual("10:54:44 PM", result.DateTime.ToLongTimeString());
             Assert.AreEqual(LongitudeDirection.W, result.LongitudeDirection);
             Assert.AreEqual(DataValid.Valid, result.Status);
             Assert.AreEqual(ModeIndicator.Autonomous, result.ModeIndicator);
@@ -108,6 +111,7 @@ namespace Autocomp.Nmea.Converter_UnitTests
             Assert.AreEqual(4916.45, result.Latitude);
             Assert.AreEqual(LatitudeDirection.N, result.LatitudeDirection);
             Assert.AreEqual(12311.12, result.Longitude);
+            Assert.AreEqual("10:54:44 PM", result.DateTime.ToLongTimeString());
             Assert.AreEqual(LongitudeDirection.E, result.LongitudeDirection);
             Assert.AreEqual(DataValid.Valid, result.Status);
             Assert.AreEqual(ModeIndicator.Autonomous, result.ModeIndicator);
@@ -123,6 +127,7 @@ namespace Autocomp.Nmea.Converter_UnitTests
             Assert.AreEqual(4916.45, result.Latitude);
             Assert.AreEqual(LatitudeDirection.N, result.LatitudeDirection);
             Assert.AreEqual(12311.12, result.Longitude);
+            Assert.AreEqual("10:54:44 PM", result.DateTime.ToLongTimeString());
             Assert.AreEqual(LongitudeDirection.W, result.LongitudeDirection);
             Assert.AreEqual(DataValid.Invalid, result.Status);
             Assert.AreEqual(ModeIndicator.DataNotValid, result.ModeIndicator);
@@ -138,6 +143,7 @@ namespace Autocomp.Nmea.Converter_UnitTests
             Assert.AreEqual(4916.45, result.Latitude);
             Assert.AreEqual(LatitudeDirection.N, result.LatitudeDirection);
             Assert.AreEqual(12311.12, result.Longitude);
+            Assert.AreEqual("10:54:44 PM", result.DateTime.ToLongTimeString());
             Assert.AreEqual(LongitudeDirection.W, result.LongitudeDirection);
             Assert.AreEqual(DataValid.Valid, result.Status);
             Assert.AreEqual(ModeIndicator.Differential, result.ModeIndicator);
@@ -153,6 +159,7 @@ namespace Autocomp.Nmea.Converter_UnitTests
             Assert.AreEqual(4916.45, result.Latitude);
             Assert.AreEqual(LatitudeDirection.N, result.LatitudeDirection);
             Assert.AreEqual(12311.12, result.Longitude);
+            Assert.AreEqual("10:54:44 PM", result.DateTime.ToLongTimeString());
             Assert.AreEqual(LongitudeDirection.W, result.LongitudeDirection);
             Assert.AreEqual(DataValid.Valid, result.Status);
             Assert.AreEqual(ModeIndicator.Estimated, result.ModeIndicator);
@@ -168,6 +175,7 @@ namespace Autocomp.Nmea.Converter_UnitTests
             Assert.AreEqual(4916.45, result.Latitude);
             Assert.AreEqual(LatitudeDirection.N, result.LatitudeDirection);
             Assert.AreEqual(12311.12, result.Longitude);
+            Assert.AreEqual("10:54:44 PM", result.DateTime.ToLongTimeString());
             Assert.AreEqual(LongitudeDirection.W, result.LongitudeDirection);
             Assert.AreEqual(DataValid.Valid, result.Status);
             Assert.AreEqual(ModeIndicator.ManualInput, result.ModeIndicator);
@@ -183,6 +191,7 @@ namespace Autocomp.Nmea.Converter_UnitTests
             Assert.AreEqual(4916.45, result.Latitude);
             Assert.AreEqual(LatitudeDirection.N, result.LatitudeDirection);
             Assert.AreEqual(12311.12, result.Longitude);
+            Assert.AreEqual("10:54:44 PM", result.DateTime.ToLongTimeString());
             Assert.AreEqual(LongitudeDirection.W, result.LongitudeDirection);
             Assert.AreEqual(DataValid.Valid, result.Status);
             Assert.AreEqual(ModeIndicator.Simulator, result.ModeIndicator);
@@ -266,6 +275,15 @@ namespace Autocomp.Nmea.Converter_UnitTests
         {
             var message = NmeaMessage.FromString("$GPGLL,4916.45,Z,12311.12,W,225444.12,A,Q*");
             var result = (GllNmeaObject)messageConverter.ConvertMessage(message);
+        }
+
+        [TestMethod]
+        public void ParseMwvAndGetString()
+        {
+            var expectedString = "Talker:GP Header:GLL Latitude:4916.45N Longitude:12311.12W DateTime:10:54:44 PM Status:Valid ModeIndicator:Autonomous";
+            var message = NmeaMessage.FromString("$GPGLL,4916.45,N,12311.12,W,225444.12,A,A*");
+            var result = messageConverter.ConvertMessage(message);
+            Assert.AreEqual(expectedString, result.ToLogInformation());
         }
     }
 }

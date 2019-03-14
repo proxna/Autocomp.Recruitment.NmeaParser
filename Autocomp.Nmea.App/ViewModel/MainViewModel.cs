@@ -79,7 +79,6 @@ namespace Autocomp.Nmea.App.ViewModel
         {
             get => messageBodyChanged ?? (messageBodyChanged = new RelayCommand<string>(param =>
             {
-
                 if (string.IsNullOrEmpty(param))
                 {
                     MessageValid = false;

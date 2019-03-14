@@ -198,5 +198,14 @@ namespace Autocomp.Nmea.Converter_UnitTests
             var message = NmeaMessage.FromString("$WIMWV,007,R,-4.7,S,A*");
             var result = (MwvNmeaObject)messageConverter.ConvertMessage(message);
         }
+
+        [TestMethod]
+        public void ParseMwvAndGetString()
+        {
+            var expectedString = "Talker:WI Header:MWV WindAngle:7 WindSpeed:4.1Knots Status:Valid";
+            var message = NmeaMessage.FromString("$WIMWV,007,R,4.1,N,A*");
+            var result = messageConverter.ConvertMessage(message);
+            Assert.AreEqual(expectedString, result.ToLogInformation());
+        }
     }
 }
