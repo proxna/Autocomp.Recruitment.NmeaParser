@@ -63,7 +63,7 @@ namespace Autocomp.Nmea.Converter_UnitTests
         [ExpectedException(typeof(UnknownHeaderException))]
         public void ParseGllMessageUsingGenericMethodUnknownHeader()
         {
-            var message = NmeaMessage.FromString("$GPMWV,4916.45,N,12311.12,W,225444.12,A,A*");
+            var message = NmeaMessage.FromString("$GPABC,4916.45,N,12311.12,W,225444.12,A,A*");
             var result = messageConverter.ConvertMessageTo<GllNmeaObject>(message);
         }
 
@@ -71,7 +71,7 @@ namespace Autocomp.Nmea.Converter_UnitTests
         [ExpectedException(typeof(UnknownTalkerException))]
         public void ParseGllMessageUnknownTalker()
         {
-            var message = NmeaMessage.FromString("$GPMWV,4916.45,N,12311.12,W,225444.12,A,A*");
+            var message = NmeaMessage.FromString("$ZZGLL,4916.45,N,12311.12,W,225444.12,A,A*");
             var result = (GllNmeaObject)messageConverter.ConvertMessage(message);
         }
 

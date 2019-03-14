@@ -27,7 +27,7 @@ namespace Autocomp.Nmea.Converter.Parsers
             }
             nmeaObject.WindAngle = angle;
             
-            if(!Enum.IsDefined(typeof(WindReference), message.Fields[1].ToUpper()[0]))
+            if(!Enum.IsDefined(typeof(WindReference), (int)message.Fields[1][0]))
             {
                 throw new FormatException($"Cannot parse value {nameof(nmeaObject.Reference)}");
             }
@@ -43,13 +43,13 @@ namespace Autocomp.Nmea.Converter.Parsers
             }
             nmeaObject.WindSpeed = speed;
 
-            if(!Enum.IsDefined(typeof(WindSpeedUnits), message.Fields[3][0]))
+            if(!Enum.IsDefined(typeof(WindSpeedUnits), (int)message.Fields[3][0]))
             {
                 throw new FormatException($"Cannot parse value {nameof(nmeaObject.Units)}");
             }
             nmeaObject.Units = (WindSpeedUnits)message.Fields[3][0];
 
-            if(!Enum.IsDefined(typeof(DataValid), message.Fields[4][0]))
+            if(!Enum.IsDefined(typeof(DataValid), (int)message.Fields[4][0]))
             {
                 throw new FormatException($"Cannot parse value {nameof(nmeaObject.Status)}");
             }

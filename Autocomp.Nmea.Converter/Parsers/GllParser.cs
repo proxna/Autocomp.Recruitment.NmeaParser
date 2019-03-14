@@ -56,13 +56,13 @@ namespace Autocomp.Nmea.Converter.Parsers
             }
             nmeaObject.DateTime = dateTime;
 
-            if (!Enum.IsDefined(typeof(DataValid), message.Fields[5][0]))
+            if (!Enum.IsDefined(typeof(DataValid), (int)message.Fields[5][0]))
             {
                 throw new FormatException($"Cannot parse value {nameof(nmeaObject.Status)}");
             }
             nmeaObject.Status = (DataValid)message.Fields[5][0];
 
-            if(!Enum.IsDefined(typeof(ModeIndicator), message.Fields[6][0]))
+            if(!Enum.IsDefined(typeof(ModeIndicator), (int)message.Fields[6][0]))
             {
                 throw new FormatException($"Cannot parse value {nameof(nmeaObject.ModeIndicator)}");
             }
