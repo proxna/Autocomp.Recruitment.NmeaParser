@@ -79,6 +79,7 @@ namespace Autocomp.Nmea.App.ViewModel
         {
             get => messageBodyChanged ?? (messageBodyChanged = new RelayCommand<string>(param =>
             {
+
                 if (string.IsNullOrEmpty(param))
                 {
                     MessageValid = false;
@@ -91,6 +92,7 @@ namespace Autocomp.Nmea.App.ViewModel
                 else
                 {
                     MessageValid = true;
+                    ErrorMessage = string.Empty;
                 }
             }));
         }

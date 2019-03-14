@@ -26,7 +26,7 @@ namespace Autocomp.Nmea.Converter.Types.ReturnTypes
 
         public string ToLogInformation()
         {
-            throw new NotImplementedException();
+            return $"Talker:{Talker} Header:{Header} Latitude:{Latitude}{LatitudeDirection} Longitude:{Longitude}{LongitudeDirection} DateTime:{DateTime.ToLongTimeString()} Status:{Status} ModeIndicator:{ModeIndicator}";
         }
     }
 }

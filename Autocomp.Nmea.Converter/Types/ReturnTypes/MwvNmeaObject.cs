@@ -20,7 +20,7 @@ namespace Autocomp.Nmea.Converter.Types.ReturnTypes
         
         public string ToLogInformation()
         {
-            throw new System.NotImplementedException();
+            return $"Talker:{Talker} Header:{Header} WindAngle:{WindAngle} WindSpeed:{WindSpeed}{Units} Status:{Status}";
         }
     }
 }

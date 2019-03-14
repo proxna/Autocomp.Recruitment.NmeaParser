@@ -11,6 +11,8 @@ namespace Autocomp.Nmea.Converter.Parsers
     {
         public override INmeaObject Parse(NmeaMessage message)
         {
+            CultureInfo.CurrentCulture = new CultureInfo("en-US");
+
             var nmeaObject = new GllNmeaObject
             {
                 Talker = GetTalker(message.Header),

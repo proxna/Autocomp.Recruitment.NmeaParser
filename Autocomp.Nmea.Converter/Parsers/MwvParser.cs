@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Globalization;
 using Autocomp.Nmea.Common;
 using Autocomp.Nmea.Converter.Interfaces;
 using Autocomp.Nmea.Converter.Types;
@@ -10,6 +11,7 @@ namespace Autocomp.Nmea.Converter.Parsers
     {
         public override INmeaObject Parse(NmeaMessage message)
         {
+            CultureInfo.CurrentCulture = new CultureInfo("en-US");
             var nmeaObject = new MwvNmeaObject
             {
                 Talker = GetTalker(message.Header),
