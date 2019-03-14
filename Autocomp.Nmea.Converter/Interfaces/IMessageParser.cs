@@ -10,6 +10,6 @@ namespace Autocomp.Nmea.Converter.Interfaces
 {
     public interface IMessageParser
     {
-        ParserResult Parse(NmeaMessage message);
+        INmeaObject Parse(NmeaMessage message);
     }
 }

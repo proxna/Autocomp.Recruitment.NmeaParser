@@ -56,14 +56,13 @@
     <Compile Include="Interfaces\IMessageConverter.cs" />
     <Compile Include="Interfaces\IMessageParser.cs" />
     <Compile Include="Interfaces\IMessageParserFactory.cs" />
+    <Compile Include="Interfaces\INmeaObject.cs" />
     <Compile Include="Parsers\BaseParser.cs" />
     <Compile Include="Parsers\GllParser.cs" />
     <Compile Include="Parsers\MwvParser.cs" />
     <Compile Include="MessageConverter.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Types\Enums.cs" />
-    <Compile Include="Types\ParserResult.cs" />
-    <Compile Include="Types\ReturnTypes\BaseNmeaObject.cs" />
     <Compile Include="Types\ReturnTypes\GllNmeaObject.cs" />
     <Compile Include="Types\ReturnTypes\MwvNmeaObject.cs" />
   </ItemGroup>

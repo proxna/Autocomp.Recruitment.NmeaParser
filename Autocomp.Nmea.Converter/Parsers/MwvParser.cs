@@ -1,5 +1,6 @@
 ﻿using System;
 using Autocomp.Nmea.Common;
+using Autocomp.Nmea.Converter.Interfaces;
 using Autocomp.Nmea.Converter.Types;
 using Autocomp.Nmea.Converter.Types.ReturnTypes;
 
@@ -7,7 +8,7 @@ namespace Autocomp.Nmea.Converter.Parsers
 {
     public class MwvParser : BaseParser
     {
-        public override ParserResult Parse(NmeaMessage message)
+        public override INmeaObject Parse(NmeaMessage message)
         {
             var nmeaObject = new MwvNmeaObject
             {
@@ -55,11 +56,7 @@ namespace Autocomp.Nmea.Converter.Parsers
             }
             nmeaObject.Status = (DataValid)message.Fields[4][0];
 
-            return new ParserResult
-            {
-                Type = typeof(MwvNmeaObject),
-                Object = nmeaObject
-            };
+            return nmeaObject;
         }
     }
 }

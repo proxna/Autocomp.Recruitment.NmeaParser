@@ -10,7 +10,7 @@ namespace Autocomp.Nmea.Converter.Interfaces
 {
     public interface IMessageConverter
     {
-        BaseNmeaObject ConvertMessage(NmeaMessage message);
+        INmeaObject ConvertMessage(NmeaMessage message);
 
         TResult ConvertMessageTo<TResult>(NmeaMessage message);
     }

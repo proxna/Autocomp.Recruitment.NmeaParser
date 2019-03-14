@@ -8,7 +8,7 @@ namespace Autocomp.Nmea.Converter.Parsers
 {
     public abstract class BaseParser : IMessageParser
     {
-        public abstract ParserResult Parse(NmeaMessage message);
+        public abstract INmeaObject Parse(NmeaMessage message);
 
         protected Talker GetTalker(string messageHeader)
         {

@@ -16,7 +16,7 @@ namespace Autocomp.Nmea.Converter
             this.messageParserFactory = messageParserFactory;
         }
 
-        public BaseNmeaObject ConvertMessage(NmeaMessage message)
+        public INmeaObject ConvertMessage(NmeaMessage message)
         {
             string headerRawValue = message.Header.Substring(2, 3);
             if(!Enum.IsDefined(typeof(Header), headerRawValue))
@@ -25,14 +25,14 @@ namespace Autocomp.Nmea.Converter
             }
             var parser = messageParserFactory.GetParserByHeader((Header)Enum.Parse(typeof(Header), headerRawValue));
             var result = parser.Parse(message);
-            return (BaseNmeaObject)result.Object;
+            return result;
         }
 
         public TResult ConvertMessageTo<TResult>(NmeaMessage message)
         {
             var parser = messageParserFactory.GetParserByType(typeof(TResult));
             var result = parser.Parse(message);
-            return (TResult)result.Object;
+            return (TResult)result;
         }
     }
 }

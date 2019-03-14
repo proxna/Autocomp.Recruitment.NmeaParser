@@ -1,4 +1,5 @@
 ﻿using Autocomp.Nmea.Common;
+using Autocomp.Nmea.Converter.Interfaces;
 using Autocomp.Nmea.Converter.Types;
 using Autocomp.Nmea.Converter.Types.ReturnTypes;
 using System;
@@ -8,7 +9,7 @@ namespace Autocomp.Nmea.Converter.Parsers
 {
     public class GllParser : BaseParser
     {
-        public override ParserResult Parse(NmeaMessage message)
+        public override INmeaObject Parse(NmeaMessage message)
         {
             var nmeaObject = new GllNmeaObject
             {
@@ -68,11 +69,7 @@ namespace Autocomp.Nmea.Converter.Parsers
             }
             nmeaObject.ModeIndicator = (ModeIndicator)message.Fields[6][0];
 
-            return new ParserResult
-            {
-                Type = typeof(GllNmeaObject),
-                Object = nmeaObject
-            };
+            return nmeaObject;
         }
     }
 }
