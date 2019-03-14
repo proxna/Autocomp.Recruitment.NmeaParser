@@ -16,6 +16,8 @@ namespace Autocomp.Nmea.Converter.Parsers
                 Header = Header.GLL
             };
 
+            GetHeaderValid(message.Header, nmeaObject.Header);
+
             if (!double.TryParse(message.Fields[0], out double latitude))
             {
                 throw new FormatException($"Cannot parse value {nameof(nmeaObject.Latitude)}");

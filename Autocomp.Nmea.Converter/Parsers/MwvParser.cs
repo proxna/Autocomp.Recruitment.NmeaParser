@@ -15,6 +15,8 @@ namespace Autocomp.Nmea.Converter.Parsers
                 Header = Header.MWV
             };
 
+            GetHeaderValid(message.Header, nmeaObject.Header);
+
             if (!double.TryParse(message.Fields[0], out double angle))
             {
                 throw new FormatException($"Cannot parse value {nameof(nmeaObject.WindAngle)}");

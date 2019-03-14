@@ -51,6 +51,7 @@
     <Compile Include="ConverterNinjectModule.cs" />
     <Compile Include="Exceptions\UnknownHeaderException.cs" />
     <Compile Include="Exceptions\UnknownTalkerException.cs" />
+    <Compile Include="Exceptions\WrongHeaderException.cs" />
     <Compile Include="Helpers\MessageParserFactory.cs" />
     <Compile Include="Interfaces\IMessageConverter.cs" />
     <Compile Include="Interfaces\IMessageParser.cs" />
